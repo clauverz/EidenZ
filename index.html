@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- penting agar responsive -->
   <title>RcHZennn</title>
   <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -17,7 +18,6 @@
       background-attachment: fixed;
     }
 
-    /* Tambahan efek festival */
     body::before {
       content: "";
       position: fixed;
@@ -97,7 +97,7 @@
       gap: 1rem;
     }
     .social-links a {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: white;
       transition: 0.3s;
     }
@@ -114,7 +114,7 @@
       right: 0;
       background: rgba(0, 0, 20, 0.9);
       border-top: 2px solid pink;
-      padding: 0.8rem 1rem;
+      padding: 0.5rem 1rem;
       box-sizing: border-box;
       z-index: 200;
     }
@@ -136,14 +136,14 @@
     }
 
     .progress-container {
-      margin: 0.5rem 0;
+      margin: 0.3rem 0;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
     .progress-bar {
       flex: 1;
-      height: 5px;
+      height: 4px;
       background: #444;
       border-radius: 2px;
       cursor: pointer;
@@ -162,12 +162,12 @@
       display: flex;
       justify-content: center;
       gap: 2rem;
-      margin-top: 0.5rem;
+      margin-top: 0.3rem;
     }
     .controls button {
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       color: white;
       cursor: pointer;
     }
@@ -178,9 +178,16 @@
 
     /* Responsive */
     @media(max-width:600px){
+      body { font-size: 1.05rem; line-height: 1.6; } /* teks lebih besar & nyaman dibaca */
+      .hero-content h1 { font-size: 2rem; }
+      .profile-img { width: 120px; height: 120px; }
+      .music-player { padding: 0.4rem 0.8rem; }
       .music-info h4 { font-size: 0.9rem; }
+      .controls { gap: 1.2rem; }
       .controls button { font-size: 1.2rem; }
+      .progress-bar { height: 3px; } /* mirip spotify */
     }
+
   </style>
 </head>
 <body>
