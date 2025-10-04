@@ -1,0 +1,15 @@
+    const playlist = [
+      { title: "Adore You!", artist: "Suiet", src: "audio/AdoreYou!.mp3", duration: "2:32" },
+      { title: "Aitai", artist: "Mosawo", src: "audio/Aitai.mp3", duration: "4:10" },
+      { title: "Anone", artist: "Yuika", src: "audio/Anone.mp3", duration: "3:32" },
+      { title: "Baka", artist: "Arekun", src: "audio/Baka.mp3", duration: "5:20" },
+      { title: "Gyutto", artist: "Mosawo", src: "audio/Gyutto.mp3", duration: "4:29" },
+      { title: "HareHareYa", artist: "Sou", src: "audio/HareHareYa.mp3", duration: "3:28" },
+      { title: "Inochi Ni Kirawarete Iru", artist: "Sou", src: "audio/InochiNiKirawareteIru.mp3", duration: "4:33" },
+      { title: "Koiiro", artist: "Mosawo", src: "audio/Koiiro.mp3", duration: "4:40" },
+      { title: "Mahou No Honyori", artist: "Suiet", src: "audio/MahouNoHonyori.mp3", duration: "2:41" },
+      { title: "Sukidakara", artist: "Yuika", src: "audio/Sukidakara.mp3", duration: "4:58" },
+      { title: "Suki Ni Saseta Kuseni", artist: "Arekun", src: "audio/SukiNiSasetaKuseni.mp3", duration: "4:18" },
+      { title: "Tada Koe Hitotsu", artist: "Rokudenashi", src: "audio/TadaKoeHitotsu.mp3", duration: "2:41" },
+      { title: "Yume To Hazakura", artist: "Wotamin", src: "audio/YumeToHazakura.mp3", duration: "3:54" },
+    ];

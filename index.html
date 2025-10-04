@@ -1,204 +1,222 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- penting agar responsive -->
-  <title>RcHZennn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sakura Night Player</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
-      font-family: 'Sawarabi Mincho', serif;
-      margin: 0;
-      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #ffe6f2;
+      background: linear-gradient(135deg, #0a043c, #18063c, #1a0b33, #4b006e, #a10060);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
       overflow-x: hidden;
-      color: #f5e6ff;
-      background: radial-gradient(circle at top, #0a0a2a, #1a1a40, #000010);
-      background-attachment: fixed;
+      min-height: 100vh;
+      position: relative;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url("https://i.ibb.co/f8kX3gJ/fireworks.png") repeat;
-      opacity: 0.15;
-      animation: flicker 10s infinite linear;
-      z-index: -1;
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    @keyframes flicker {
-      0% {opacity: 0.1;}
-      50% {opacity: 0.2;}
-      100% {opacity: 0.1;}
+
+    /* Sparkle */
+    .sparkle {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .sparkle span {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      animation: sparkleMove 5s linear infinite;
+    }
+
+    @keyframes sparkleMove {
+      0% { transform: translateY(0) scale(0); opacity: 1; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1); opacity: 0; }
     }
 
     header {
-      position: sticky;
-      top: 0;
+      width: 100%;
+      padding: 8px 25px;
+      background: rgba(10,4,60,0.6);
+      backdrop-filter: blur(8px);
+      display: flex; justify-content: space-between; align-items: center;
+      position: fixed; top: 0; left: 0;
       z-index: 100;
-      background: rgba(0, 0, 30, 0.5);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+      border-bottom: 1px solid rgba(255,192,203,0.3);
     }
-    .nav-container {
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      color: #ffc8dd;
+      font-size: 1.2rem;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 0.8rem 2rem;
     }
-    .logo {
-      font-size: 1.8rem;
-      color: pink;
-      font-weight: bold;
-    }
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      color: #fff;
+
+    header h1::before { content: '🌸'; margin-right: 6px; }
+
+    nav a {
+      color: #ffe6f2;
+      margin-left: 18px;
       text-decoration: none;
-    }
-    .nav-links a:hover {
-      color: pink;
+      font-size: 0.9rem;
+      transition: color 0.3s;
     }
 
-    /* Hero */
+    nav a:hover { color: #ff99cc; }
+
     .hero {
-      min-height: 80vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      padding: 2rem;
-    }
-    .hero-content h1 {
-      font-size: 3rem;
-      color: pink;
+      padding-top: 110px;
+      position: relative;
+      z-index: 2;
     }
 
-    /* Profile */
-    .profile-section {
-      margin-top: 2rem;
+    .hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #ffd6f3;
+      margin-bottom: 15px;
     }
-    .profile-img {
-      width: 150px;
-      height: 150px;
+
+    .hero img {
+      width: 120px; height: 120px;
       border-radius: 50%;
-      border: 3px solid pink;
-      object-fit: cover;
+      border: 3px solid #ffb3d9;
+      box-shadow: 0 0 20px #ff80bf;
+      margin: 15px 0;
     }
-    .social-links {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
+
+    .hero h3 {
+      font-family: 'Playfair Display', serif;
+      color: #ffbde0;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
     }
-    .social-links a {
-      font-size: 1.8rem;
-      color: white;
-      transition: 0.3s;
+
+    .hero p {
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-size: 0.9rem;
+      color: #f3d1f4;
     }
-    .social-links a:hover {
-      color: pink;
-      transform: scale(1.2);
+    
+
+    footer {
+      margin-top: 30px;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #ffd1e8;
+      opacity: 0.8;
     }
 
     /* Music Player */
     .music-player {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 20, 0.9);
-      border-top: 2px solid pink;
-      padding: 0.5rem 1rem;
-      box-sizing: border-box;
-      z-index: 200;
+      bottom: 0; left: 0;
+      width: 100%;
+      background: rgba(10, 4, 60, 0.9);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255,192,203,0.3);
+      padding: 10px 15px;
+      z-index: 99;
+      text-align: center;
     }
 
-    .music-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-    }
-    .music-info h4 {
-      margin: 0;
-      font-size: 1rem;
-      color: pink;
-    }
-    .music-info p {
-      margin: 0;
+    .music-info {
+      text-align: left;
+      color: #ffd9ec;
       font-size: 0.8rem;
-      color: #aaa;
+      margin-bottom: 5px;
+    }
+
+    .music-info strong {
+      display: block;
+      color: #fff;
+      font-size: 0.85rem;
     }
 
     .progress-container {
-      margin: 0.3rem 0;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-    }
-    .progress-bar {
-      flex: 1;
-      height: 4px;
-      background: #444;
-      border-radius: 2px;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: #fff;
+      margin-bottom: 5px;
       cursor: pointer;
     }
-    #progress {
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: #555;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 0 10px;
+    }
+
+    .progress {
       height: 100%;
       width: 0%;
-      background: pink;
-    }
-    .time {
-      font-size: 0.75rem;
-      color: #fff;
+      background: #ff80bf;
+      transition: width 0.2s linear;
     }
 
-    .controls {
+    .music-controls {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      margin-top: 0.3rem;
+      align-items: center;
+      gap: 20px;
     }
-    .controls button {
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      color: white;
+
+    .music-controls i {
+      color: #fff;
+      font-size: 1.2rem;
       cursor: pointer;
-    }
-    .controls button:hover {
-      color: pink;
-      transform: scale(1.2);
+      transition: transform 0.2s, color 0.3s;
     }
 
-    /* Responsive */
-    @media(max-width:600px){
-      body { font-size: 1.05rem; line-height: 1.6; } /* teks lebih besar & nyaman dibaca */
-      .hero-content h1 { font-size: 2rem; }
-      .profile-img { width: 120px; height: 120px; }
-      .music-player { padding: 0.4rem 0.8rem; }
-      .music-info h4 { font-size: 0.9rem; }
-      .controls { gap: 1.2rem; }
-      .controls button { font-size: 1.2rem; }
-      .progress-bar { height: 3px; } /* mirip spotify */
-    }
+    .music-controls i:hover { color: #ff99cc; transform: scale(1.2); }
 
+    .active { color: #ff66b3 !important; }
+
+    @media (max-width: 768px) {
+      header { padding: 6px 18px; }
+      header h1 { font-size: 1.1rem; }
+      nav a { font-size: 0.8rem; margin-left: 10px; }
+      .hero { padding-top: 85px; }
+      .hero h2 { font-size: 1.6rem; }
+      .hero img { width: 100px; height: 100px; }
+      .music-controls i { font-size: 1rem; }
+    }
   </style>
 </head>
 <body>
+
+  <div class="sparkle"></div>
+
   <header>
-    <div class="nav-container">
-      <div class="logo">🌸 Zennrch</div>
-      <ul class="nav-links">
-        <li><a href="#home">Beranda</a></li>
-        <li><a href="#about">Tentang</a></li>
-      </ul>
-    </div>
+    <h1>Zennrch</h1>
+    <nav>
+      <a href="#">Beranda</a>
+      <a href="#">Tentang</a>
+    </nav>
   </header>
 
   <section id="home" class="hero">
@@ -223,108 +241,154 @@
     </div>
   </section>
 
-  <!-- Music Player -->
+  <footer>©Zennrch</footer>
+
   <div class="music-player">
-    <div class="music-top">
-      <div class="music-info">
-        <h4 id="title">Music</h4>
-        <p id="artist"></p>
-      </div>
-      <span class="time" id="duration">0:00</span>
+    <div class="music-info">
+      <strong id="song-title">Tada Koe Hitotsu</strong>
+      <span id="artist-name">Rokudenashi</span>
     </div>
-    <div class="progress-container">
-      <span class="time" id="current-time">0:00</span>
-      <div class="progress-bar"><div id="progress"></div></div>
+
+    <div class="progress-container" id="progress-container">
+      <span id="current-time">0:00</span>
+      <div class="progress-bar"><div class="progress" id="progress"></div></div>
+      <span id="duration">0:00</span>
     </div>
-    <div class="controls">
-      <button id="prev"><i class="fas fa-backward"></i></button>
-      <button id="play"><i class="fas fa-play"></i></button>
-      <button id="next"><i class="fas fa-forward"></i></button>
+
+    <div class="music-controls">
+      <i class="fa-solid fa-shuffle" id="shuffle"></i>
+      <i class="fa-solid fa-backward" id="prev"></i>
+      <i class="fa-solid fa-circle-play" id="play"></i>
+      <i class="fa-solid fa-forward" id="next"></i>
+      <i class="fa-solid fa-repeat" id="repeat"></i>
     </div>
+
+    <audio id="audio"></audio>
   </div>
 
-  <audio id="audio"></audio>
-
   <script>
-    const songs = [
-      { title: "Yume To Hazakura", artist: "Wotamin", src: "audio/YumeToHazakura.mp3" },
-      { title: "Tada Koe Hitotsu", artist: "Rokudenashi", src: "audio/TadaKoeHitotsu.mp3" },
-      { title: "Mahou No Honyori", artist: "Suiet", src: "audio/MahouNoHonyori.mp3" },
-      { title: "Gyutto", artist: "Mosawo", src: "audio/Gyutto.mp3" },
-      { title: "HareHareYa", artist: "Sou", src: "audio/HareHareYa.mp3" },
-      { title: "Koiiro", artist: "Mosawo", src: "audio/Koiiro.mp3" },
-      { title: "Aitai", artist: "Mosawo", src: "audio/Aitai.mp3" },
-      { title: "Sukidakara", artist: "Yuika", src: "audio/Sukidakara.mp3" },
-      { title: "Adore You!", artist: "Suiet", src: "audio/AdoreYou!.mp3" },
-      { title: "Inochi Ni Kirawarete Iru", artist: "Sou", src: "audio/InochiNiKirawareteIru.mp3" },
-      { title: "Anone", artist: "Yuika", src: "audio/Anone.mp3" },
-      { title: "Suki Ni Saseta Kuseni", artist: "Arekum", src: "audio/SukiNiSasetaKuseni.mp3" },
-      { title: "Baka", artist: "Arekun", src: "audio/Baka.mp3" },
+    const sparkleContainer = document.querySelector('.sparkle');
+    for (let i = 0; i < 60; i++) {
+      const span = document.createElement('span');
+      span.style.left = Math.random() * 100 + '%';
+      span.style.top = Math.random() * 100 + '%';
+      span.style.animationDelay = Math.random() * 5 + 's';
+      span.style.animationDuration = 4 + Math.random() * 4 + 's';
+      sparkleContainer.appendChild(span);
+    }
+
+    const playlist = [
+      { title: "Adore You!", artist: "Suiet", src: "audio/AdoreYou!.mp3"},
+      { title: "Aitai", artist: "Mosawo", src: "audio/Aitai.mp3"},
+      { title: "Anone", artist: "Yuika", src: "audio/Anone.mp3"},
+      { title: "Baka", artist: "Arekun", src: "audio/Baka.mp3"},
+      { title: "Gyutto", artist: "Mosawo", src: "audio/Gyutto.mp3"},
+      { title: "HareHareYa", artist: "Sou", src: "audio/HareHareYa.mp3"},
+      { title: "Inochi Ni Kirawarete Iru", artist: "Sou", src: "audio/InochiNiKirawareteIru.mp3"},
+      { title: "Koiiro", artist: "Mosawo", src: "audio/Koiiro.mp3"},
+      { title: "Mahou No Honyori", artist: "Suiet", src: "audio/MahouNoHonyori.mp3"},
+      { title: "Sukidakara", artist: "Yuika", src: "audio/Sukidakara.mp3"},
+      { title: "Suki Ni Saseta Kuseni", artist: "Arekun", src: "audio/SukiNiSasetaKuseni.mp3"},
+      { title: "Tada Koe Hitotsu", artist: "Rokudenashi", src: "audio/TadaKoeHitotsu.mp3"},
+      { title: "Yume To Hazakura", artist: "Wotamin", src: "audio/YumeToHazakura.mp3"},
     ];
-    let songIndex = 0;
+
+    let index = 0;
+    let isPlaying = false;
+    let isShuffle = false;
+    let isRepeat = false;
 
     const audio = document.getElementById('audio');
     const playBtn = document.getElementById('play');
     const prevBtn = document.getElementById('prev');
     const nextBtn = document.getElementById('next');
-    const title = document.getElementById('title');
-    const artist = document.getElementById('artist');
+    const shuffleBtn = document.getElementById('shuffle');
+    const repeatBtn = document.getElementById('repeat');
+    const progressContainer = document.getElementById('progress-container');
     const progress = document.getElementById('progress');
-    const progressContainer = document.querySelector('.progress-bar');
     const currentTimeEl = document.getElementById('current-time');
     const durationEl = document.getElementById('duration');
+    const songTitle = document.getElementById('song-title');
+    const artistName = document.getElementById('artist-name');
 
-    function loadSong(song){
-      title.textContent = song.title;
-      artist.textContent = song.artist;
+    function loadSong(index) {
+      const song = playlist[index];
       audio.src = song.src;
+      songTitle.textContent = song.title;
+      artistName.textContent = song.artist;
     }
-    function playSong(){
+
+    function playSong() {
       audio.play();
-      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      isPlaying = true;
+      playBtn.classList.replace('fa-circle-play', 'fa-circle-pause');
     }
-    function pauseSong(){
+
+    function pauseSong() {
       audio.pause();
-      playBtn.innerHTML = '<i class="fas fa-play"></i>';
+      isPlaying = false;
+      playBtn.classList.replace('fa-circle-pause', 'fa-circle-play');
     }
 
-    let isPlaying = false;
-    playBtn.addEventListener('click', ()=>{
-      if(isPlaying){ pauseSong(); isPlaying=false; }
-      else{ playSong(); isPlaying=true; }
+    playBtn.addEventListener('click', () => isPlaying ? pauseSong() : playSong());
+
+    nextBtn.addEventListener('click', () => nextSong());
+    prevBtn.addEventListener('click', () => prevSong());
+
+    shuffleBtn.addEventListener('click', () => {
+      isShuffle = !isShuffle;
+      shuffleBtn.classList.toggle('active', isShuffle);
     });
 
-    nextBtn.addEventListener('click', ()=>{
-      songIndex = (songIndex+1)%songs.length;
-      loadSong(songs[songIndex]); playSong(); isPlaying=true;
+    repeatBtn.addEventListener('click', () => {
+      isRepeat = !isRepeat;
+      repeatBtn.classList.toggle('active', isRepeat);
     });
-    prevBtn.addEventListener('click', ()=>{
-      songIndex = (songIndex-1+songs.length)%songs.length;
-      loadSong(songs[songIndex]); playSong(); isPlaying=true;
+
+    function nextSong() {
+      if (isShuffle) index = Math.floor(Math.random() * playlist.length);
+      else index = (index + 1) % playlist.length;
+      loadSong(index);
+      playSong();
+    }
+
+    function prevSong() {
+      index = (index - 1 + playlist.length) % playlist.length;
+      loadSong(index);
+      playSong();
+    }
+
+    audio.addEventListener('ended', () => {
+      if (isRepeat) playSong();
+      else nextSong();
     });
-    audio.addEventListener('ended', ()=>{ nextBtn.click(); });
 
-    audio.addEventListener('timeupdate', ()=>{
-      if(audio.duration){
-        let progressPercent = (audio.currentTime/audio.duration)*100;
-        progress.style.width = `${progressPercent}%`;
+    // Progress bar update
+    audio.addEventListener('timeupdate', () => {
+      if (isNaN(audio.duration)) return;
+      const progressPercent = (audio.currentTime / audio.duration) * 100;
+      progress.style.width = progressPercent + '%';
 
-        let curMin = Math.floor(audio.currentTime/60);
-        let curSec = Math.floor(audio.currentTime%60).toString().padStart(2,'0');
-        currentTimeEl.textContent = `${curMin}:${curSec}`;
+      let currentMin = Math.floor(audio.currentTime / 60);
+      let currentSec = Math.floor(audio.currentTime % 60);
+      if (currentSec < 10) currentSec = '0' + currentSec;
+      currentTimeEl.textContent = `${currentMin}:${currentSec}`;
 
-        let durMin = Math.floor(audio.duration/60);
-        let durSec = Math.floor(audio.duration%60).toString().padStart(2,'0');
-        durationEl.textContent = `${durMin}:${durSec}`;
-      }
+      let durationMin = Math.floor(audio.duration / 60);
+      let durationSec = Math.floor(audio.duration % 60);
+      if (durationSec < 10) durationSec = '0' + durationSec;
+      durationEl.textContent = `${durationMin}:${durationSec}`;
     });
-    progressContainer.addEventListener('click',(e)=>{
+
+    // Seek click event
+    progressContainer.addEventListener('click', (e) => {
       const width = progressContainer.clientWidth;
       const clickX = e.offsetX;
-      audio.currentTime = (clickX/width)*audio.duration;
+      const duration = audio.duration;
+      audio.currentTime = (clickX / width) * duration;
     });
 
-    loadSong(songs[songIndex]);
+    loadSong(index);
   </script>
 </body>
 </html>

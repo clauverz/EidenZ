@@ -1,243 +1,330 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Portofolio Jepang - Sakura Night</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Sawarabi Mincho', serif;
-            background: linear-gradient(135deg, #0a0a2a, #1a1a40, #001a33);
-            background-attachment: fixed;
-            color: #f5e6ff;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- penting agar responsive -->
+  <title>RcHZennn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        /* Sakura petals */
-        .petal {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            background: pink;
-            border-radius: 50% 50% 70% 30% / 50% 40% 60% 50%;
-            opacity: 0.6;
-            animation: fall linear infinite;
-        }
+  <style>
+    body {
+      font-family: 'Sawarabi Mincho', serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      color: #f5e6ff;
+      background: radial-gradient(circle at top, #0a0a2a, #1a1a40, #000010);
+      background-attachment: fixed;
+    }
 
-        @keyframes fall {
-            0% { transform: translateY(-10%) rotate(0deg); opacity: 0.8; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-        }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("https://i.ibb.co/f8kX3gJ/fireworks.png") repeat;
+      opacity: 0.15;
+      animation: flicker 10s infinite linear;
+      z-index: -1;
+    }
+    @keyframes flicker {
+      0% {opacity: 0.1;}
+      50% {opacity: 0.2;}
+      100% {opacity: 0.1;}
+    }
 
-        /* Navbar */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(0, 0, 30, 0.4);
-            backdrop-filter: blur(6px);
-            border-bottom: 1px solid rgba(255, 182, 193, 0.3);
-        }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(0, 0, 30, 0.5);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(255, 182, 193, 0.3);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2rem;
+    }
+    .logo {
+      font-size: 1.8rem;
+      color: pink;
+      font-weight: bold;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-links a:hover {
+      color: pink;
+    }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 2rem;
-        }
+    /* Hero */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      color: pink;
+    }
 
-        .logo {
-            font-family: 'Sawarabi Mincho', serif;
-            font-size: 1.8rem;
-            color: pink;
-            font-weight: bold;
-        }
+    /* Profile */
+    .profile-section {
+      margin-top: 2rem;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid pink;
+      object-fit: cover;
+    }
+    .social-links {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .social-links a {
+      font-size: 1.8rem;
+      color: white;
+      transition: 0.3s;
+    }
+    .social-links a:hover {
+      color: pink;
+      transform: scale(1.2);
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
+    /* Music Player */
+    .music-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 20, 0.9);
+      border-top: 2px solid pink;
+      padding: 0.5rem 1rem;
+      box-sizing: border-box;
+      z-index: 200;
+    }
 
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+    .music-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .music-info h4 {
+      margin: 0;
+      font-size: 1rem;
+      color: pink;
+    }
+    .music-info p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
 
-        .nav-links a:hover {
-            color: pink;
-        }
+    .progress-container {
+      margin: 0.3rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .progress-bar {
+      flex: 1;
+      height: 4px;
+      background: #444;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    #progress {
+      height: 100%;
+      width: 0%;
+      background: pink;
+    }
+    .time {
+      font-size: 0.75rem;
+      color: #fff;
+    }
 
-        /* Hero */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at 50% 30%, rgba(255,192,203,0.15), transparent 70%);
-            padding: 2rem;
-        }
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 0.3rem;
+    }
+    .controls button {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: white;
+      cursor: pointer;
+    }
+    .controls button:hover {
+      color: pink;
+      transform: scale(1.2);
+    }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            color: pink;
-            text-shadow: 0 0 12px rgba(255, 192, 203, 0.6);
-        }
+    /* Responsive */
+    @media(max-width:600px){
+      body { font-size: 1.05rem; line-height: 1.6; } /* teks lebih besar & nyaman dibaca */
+      .hero-content h1 { font-size: 2rem; }
+      .profile-img { width: 120px; height: 120px; }
+      .music-player { padding: 0.4rem 0.8rem; }
+      .music-info h4 { font-size: 0.9rem; }
+      .controls { gap: 1.2rem; }
+      .controls button { font-size: 1.2rem; }
+      .progress-bar { height: 3px; } /* mirip spotify */
+    }
 
-        .hero-content p {
-            color: #d6d6ff;
-            font-size: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        /* Profile Section */
-        .profile-section {
-            margin-top: 3rem;
-            text-align: center;
-            color: #f5e6ff;
-            animation: fadeInUp 1.2s ease both;
-        }
-
-        .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid pink;
-            box-shadow: 0 0 20px rgba(255, 182, 193, 0.6),
-                        0 0 40px rgba(255, 192, 203, 0.4);
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05) rotate(3deg);
-        }
-
-        .profile-section h2 {
-            margin: 1rem 0 0.5rem;
-            font-size: 1.8rem;
-            color: pink;
-            text-shadow: 0 0 8px rgba(255,192,203,0.6);
-        }
-
-        .profile-section p {
-            max-width: 420px;
-            margin: 0 auto;
-            color: #d6d6ff;
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        /* Social Links */
-        .social-links {
-            margin-top: 1.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-        }
-
-        .social-links a {
-            text-decoration: none;
-            font-size: 1.3rem;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            transition: 0.3s;
-            box-shadow: 0 0 10px rgba(255,192,203,0.4);
-        }
-
-        /* warna sesuai platform */
-        .social-links a:nth-child(1) { background: #e1306c; } /* Instagram */
-        .social-links a:nth-child(2) { background: #010101; } /* TikTok */
-        .social-links a:nth-child(3) { background: #0088cc; } /* Telegram */
-
-        .social-links a:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 15px rgba(255,192,203,0.8);
-        }
-
-        /* Animasi Fade In */
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(0, 0, 30, 0.8);
-            border-top: 1px solid pink;
-            text-align: center;
-            padding: 1.5rem 0;
-            color: #aaa;
-            margin-top: 3rem;
-        }
-    </style>
+  </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
+  <header>
+    <div class="nav-container">
+      <div class="logo">🌸 Zennrch</div>
+      <ul class="nav-links">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#about">Tentang</a></li>
+      </ul>
+    </div>
+  </header>
 
-    <!-- Navbar -->
-    <header>
-        <div class="nav-container">
-            <div class="logo">🌸 Zennrch</div>
-            <ul class="nav-links">
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#about">Tentang</a></li>
-            </ul>
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Welcome Readers ✨</h1>
+      <div class="profile-section">
+        <img src="profile.jpg" class="profile-img">
+        <h2>Zennrch</h2>
+        <p>
+          Yo Halo Readers, Aku adalah seorang manusia biasa yang jika sudah menyukai sesuatu akan terobsesi dengan hal itu, you can call me Zenn. 
+          <br><br>
+          Aku bisa menjadi apapun itu, Magician, Proplayer, Musician, dan masih banyak hal lagi yang bisa aku lakukan, termasuk mendapatkan hatimu? mungkin
+          <br><br>
+          Seperti yang aku bilang di atas, aku sangat menyukai berbagai hal, seperti bermain Sulap, Game, Pokemon, Music, Pemandangan indah dan banyak hal lainnya.  </p>
+        <div class="social-links">
+          <a href="https://instagram.com/urfavcloverz"><i class="fab fa-instagram"></i></a>
+          <a href="https://tiktok.com/@zennrch"><i class="fab fa-tiktok"></i></a>
+          <a href="https://t.me/someone4talk"><i class="fab fa-telegram"></i></a>
+          <a href="https://whatsapp.com/channel/0029Vb6YPPA8qIztifIniK3g"><i class="fab fa-whatsapp"></i></a>
         </div>
-    </header>
+      </div>
+    </div>
+  </section>
 
-    <!-- Hero -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Konbanwa, Readers ✨</h1>
-            <p>Selamat datang di malam sakura berbintang.</p>
-            
-            <!-- Profile Section -->
-            <div class="profile-section">
-                <img src="https://i.pravatar.cc/300" alt="Profile" class="profile-img">
-                <h2>Nama Kamu</h2>
-                <p>
-                    Halo! Saya adalah seorang pembelajar yang suka teknologi, seni, dan berbagi inspirasi.  
-                    Website ini saya buat sederhana dengan nuansa sakura. 🌸
-                </p>
+  <!-- Music Player -->
+  <div class="music-player">
+    <div class="music-top">
+      <div class="music-info">
+        <h4 id="title">Music</h4>
+        <p id="artist"></p>
+      </div>
+      <span class="time" id="duration">0:00</span>
+    </div>
+    <div class="progress-container">
+      <span class="time" id="current-time">0:00</span>
+      <div class="progress-bar"><div id="progress"></div></div>
+    </div>
+    <div class="controls">
+      <button id="prev"><i class="fas fa-backward"></i></button>
+      <button id="play"><i class="fas fa-play"></i></button>
+      <button id="next"><i class="fas fa-forward"></i></button>
+    </div>
+  </div>
 
-                <div class="social-links">
-                    <a href="https://instagram.com/username" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://tiktok.com/@username" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://t.me/username" target="_blank"><i class="fab fa-telegram"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <audio id="audio"></audio>
 
-    <footer>
-        <p>&copy; 2025 Zennrch - Sakura Night Theme</p>
-    </footer>
+  <script>
+    const songs = [
+      { title: "Yume To Hazakura", artist: "Wotamin", src: "audio/YumeToHazakura.mp3" },
+      { title: "Tada Koe Hitotsu", artist: "Rokudenashi", src: "audio/TadaKoeHitotsu.mp3" },
+      { title: "Mahou No Honyori", artist: "Suiet", src: "audio/MahouNoHonyori.mp3" },
+      { title: "Gyutto", artist: "Mosawo", src: "audio/Gyutto.mp3" },
+      { title: "HareHareYa", artist: "Sou", src: "audio/HareHareYa.mp3" },
+      { title: "Koiiro", artist: "Mosawo", src: "audio/Koiiro.mp3" },
+      { title: "Aitai", artist: "Mosawo", src: "audio/Aitai.mp3" },
+      { title: "Sukidakara", artist: "Yuika", src: "audio/Sukidakara.mp3" },
+      { title: "Adore You!", artist: "Suiet", src: "audio/AdoreYou!.mp3" },
+      { title: "Inochi Ni Kirawarete Iru", artist: "Sou", src: "audio/InochiNiKirawareteIru.mp3" },
+      { title: "Anone", artist: "Yuika", src: "audio/Anone.mp3" },
+      { title: "Suki Ni Saseta Kuseni", artist: "Arekum", src: "audio/SukiNiSasetaKuseni.mp3" },
+      { title: "Baka", artist: "Arekun", src: "audio/Baka.mp3" },
+    ];
+    let songIndex = 0;
 
-    <script>
-        function createPetals() {
-            const particlesContainer = document.getElementById('particles');
-            const petalCount = 12; // jumlah dikurangi agar tidak terlalu rame
-            for (let i = 0; i < petalCount; i++) {
-                const petal = document.createElement('div');
-                petal.className = 'petal';
-                petal.style.left = Math.random() * 100 + '%';
-                petal.style.animationDuration = (Math.random() * 6 + 6) + 's';
-                petal.style.animationDelay = Math.random() * 5 + 's';
-                particlesContainer.appendChild(petal);
-            }
-        }
-        window.addEventListener('load', createPetals);
-    </script>
+    const audio = document.getElementById('audio');
+    const playBtn = document.getElementById('play');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const title = document.getElementById('title');
+    const artist = document.getElementById('artist');
+    const progress = document.getElementById('progress');
+    const progressContainer = document.querySelector('.progress-bar');
+    const currentTimeEl = document.getElementById('current-time');
+    const durationEl = document.getElementById('duration');
+
+    function loadSong(song){
+      title.textContent = song.title;
+      artist.textContent = song.artist;
+      audio.src = song.src;
+    }
+    function playSong(){
+      audio.play();
+      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    }
+    function pauseSong(){
+      audio.pause();
+      playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    }
+
+    let isPlaying = false;
+    playBtn.addEventListener('click', ()=>{
+      if(isPlaying){ pauseSong(); isPlaying=false; }
+      else{ playSong(); isPlaying=true; }
+    });
+
+    nextBtn.addEventListener('click', ()=>{
+      songIndex = (songIndex+1)%songs.length;
+      loadSong(songs[songIndex]); playSong(); isPlaying=true;
+    });
+    prevBtn.addEventListener('click', ()=>{
+      songIndex = (songIndex-1+songs.length)%songs.length;
+      loadSong(songs[songIndex]); playSong(); isPlaying=true;
+    });
+    audio.addEventListener('ended', ()=>{ nextBtn.click(); });
+
+    audio.addEventListener('timeupdate', ()=>{
+      if(audio.duration){
+        let progressPercent = (audio.currentTime/audio.duration)*100;
+        progress.style.width = `${progressPercent}%`;
+
+        let curMin = Math.floor(audio.currentTime/60);
+        let curSec = Math.floor(audio.currentTime%60).toString().padStart(2,'0');
+        currentTimeEl.textContent = `${curMin}:${curSec}`;
+
+        let durMin = Math.floor(audio.duration/60);
+        let durSec = Math.floor(audio.duration%60).toString().padStart(2,'0');
+        durationEl.textContent = `${durMin}:${durSec}`;
+      }
+    });
+    progressContainer.addEventListener('click',(e)=>{
+      const width = progressContainer.clientWidth;
+      const clickX = e.offsetX;
+      audio.currentTime = (clickX/width)*audio.duration;
+    });
+
+    loadSong(songs[songIndex]);
+  </script>
 </body>
 </html>
